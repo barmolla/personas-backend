@@ -92,7 +92,7 @@ const patch = async (req, res) => {
     const personFound = await Person.find({ _id: req.params.id })
 
     if (personFound) {
-        await Person.updateOne(validBody)
+        await Person.updateOne({ _id: req.params.id }, validBody)
 
         return res.status(200).send(new ApiResponse({ status: 200, message: 'entity updated', result: '' }))
 
